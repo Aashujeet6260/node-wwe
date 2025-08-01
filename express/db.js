@@ -1,11 +1,18 @@
 const mongooseURL = require('mongoose');
+require('dotenv').config(); // Load environment variables from .env file
 
 // Import mongoose to connect to MongoDB
 
-mongooseURL.connect('mongodb://localhost:27017/wwe', {
+//const mongooseUrl = 'mongodb://localhost:27017/wwe'; // Define the MongoDB connection URL
+const mongooseUrl = process.env.MONGODB_URL; // Use the MongoDB URL from environment variables
+
+
+mongooseURL.connect(mongooseUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
+
+
 
 
 // Connect to MongoDB database   
